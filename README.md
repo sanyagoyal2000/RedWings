@@ -1,4 +1,3 @@
 # oops-bm
-Web application project oops
-design.html is the homepage
-Firebase would be used to use this web application
+A database management web application for managing blood banaks,donors and recepients
+
