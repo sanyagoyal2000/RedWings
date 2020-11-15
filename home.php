@@ -1,3 +1,17 @@
+<?php
+include "config.php";
+
+// Check user login or not
+if(!isset($_SESSION['email'])){
+    header('Location: index.php');
+}
+
+// logout
+if(isset($_POST['but_logout'])){
+    session_destroy();
+    header('Location: index.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,7 +68,12 @@
                     <a class="nav-link" href="search.html">Search Blood</a>
                   </li>
           <li class="nav-item">
-                    <a class="nav-link" href="login.php">Login</a>
+                    <a class="nav-link" href="login.html">Login</a>
+                  </li>
+                  <li class="nav-item">
+                  <form method='post' action="">
+            <input type="submit" value="Logout" name="but_logout">
+        </form>
                   </li>
       </ul>
     </div>

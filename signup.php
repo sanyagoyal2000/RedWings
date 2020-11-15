@@ -1,3 +1,6 @@
+<?php 
+include "config.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +24,64 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <link rel="shortcut icon" href="assets/images/fav.jpg">
+<?php 
+$error_message = "";$success_message = "";
+
+// Register user
+if(isset($_POST['btnsignup'])){
+   $name = trim($_POST['name']);
+  
+   $email = trim($_POST['email']);
+   $password = trim($_POST['password']);
    
+   $gender = trim($_POST['gender']);
+   $address = trim($_POST['address']);
+   $phone = trim($_POST['phone']);
+   
+
+   $isValid = true;
+
+   // Check fields are empty or not
+   if($name == ''  || $email == '' || $password == ''|| $gender==''||$address==''||$phone==''){
+     $isValid = false;
+     $error_message = "Please fill all fields.";
+   }
+
+  
+
+   // Check if Email-ID is valid or not
+   if ($isValid && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+     $isValid = false;
+     $error_message = "Invalid Email-ID.";
+   }
+
+   if($isValid){
+
+     // Check if Email-ID already exists
+     $stmt = $con->prepare("SELECT * FROM users WHERE email = ?");
+     $stmt->bind_param("s", $email);
+     $stmt->execute();
+     $result = $stmt->get_result();
+     $stmt->close();
+     if($result->num_rows > 0){
+       $isValid = false;
+       $error_message = "Email-ID is already existed.";
+     }
+
+   }
+
+   // Insert records
+   if($isValid){
+     $insertSQL = "INSERT INTO users(name,email,password,gender,address,phone) values(?,?,?,?,?,?)";
+     $stmt = $con->prepare($insertSQL);
+     $stmt->bind_param("ssssss",$name,$email,$password,$gender,$address,$phone);
+     $stmt->execute();
+     $stmt->close();
+
+     $success_message = "Account created successfully.";
+   }
+}
+?>
 </head>
 <body>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark"">
@@ -75,7 +135,7 @@
       <div class="container-fluid ">
         <div class="container ">
             <div class="row ">
-                
+            
                 <div class="col-sm-10 login-box">
                     <div class="row">
                        <div class="col-lg-4 col-md-5 box-de">
@@ -91,19 +151,34 @@
                         <div class="col-lg-8 col-md-7 log-det">
                             
                             <h2>Create Account</h2>
-                            <div class="row">
-                                <ul>
-                                    <li> <i class="fab fa-google"></i></li>
-                                   <li> <i class="fab fa-facebook-square"></i></li>
-                                    
+                            
+                            
+                            <form method='post' action=''>
 
-                                    <li><i class="fab fa-twitter-square"></i></li>
-                                </ul>
-                            </div>
-                            <div class="row">
-                                <p class="small-info">or use your email account</p>
-                            </div>
 
+<?php 
+// Display Error message
+if(!empty($error_message)){
+?>
+<div class="alert alert-danger">
+  <strong>Error!</strong> <?= $error_message ?>
+</div>
+
+<?php
+}
+?>
+
+<?php 
+// Display Success message
+if(!empty($success_message)){
+?>
+<div class="alert alert-success">
+  <strong>Success!</strong> <?= $success_message ?>
+</div>
+
+<?php
+}
+?>
 
                             <div class="text-box-cont">
                                 <div class="input-group mb-3">
@@ -111,7 +186,7 @@
                                         <span class="input-group-text" id="basic-addon1">
                                         <i class="far fa-user"></i></span>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="Full Name" aria-label="Username" aria-describedby="basic-addon1">
+                                    <input type="text" class="form-control" placeholder="Full Name" name="name" aria-label="Username" aria-describedby="basic-addon1">
                                 </div>
                                  <div class="input-group mb-3">
                                     <div class="input-group-prepend">
@@ -119,42 +194,38 @@
                                             <i class="far fa-envelope"></i>
                                         </span>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="Email Address" aria-label="Username" aria-describedby="basic-addon1">
+                                    <input type="email" class="form-control" placeholder="Email Address" name="email" aria-label="Username" aria-describedby="basic-addon1">
                                 </div>
                                  <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon1"><i class="fas fa-lock"></i></span>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1">
+                                    <input type="password" class="form-control" placeholder="Password" name="password" aria-label="Username" aria-describedby="basic-addon1">
                                 </div>
-                                <div class="input-group mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text" id="basic-addon1"><i class="far fa-calendar-week"></i></span>
-                                    </div>
-                                    <input type="date" class="form-control" placeholder="Date-of-Birth" aria-label="Username" aria-describedby="basic-addon1">
-                                </div>
+                            
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon1"><i class="fas fa-venus-mars"></i></span>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="Gender" aria-label="Username" aria-describedby="basic-addon1">
+                                    <input type="text" class="form-control" placeholder="Gender" name="gender" aria-label="Username" aria-describedby="basic-addon1">
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon1"><i class="fas fa-map-marker-alt"></i></span>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="Address" aria-label="Username" aria-describedby="basic-addon1">
+                                    <input type="text" class="form-control" placeholder="Address" name="address" aria-label="Username" aria-describedby="basic-addon1">
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon1"><i class="fas fa-phone-alt"></i></span>
                                     </div>
-                                    <input type="tel" class="form-control" placeholder="Mobile No." aria-label="Username" aria-describedby="basic-addon1">
+                                    <input type="tel" class="form-control" placeholder="Mobile No." name="phone" aria-label="Username" aria-describedby="basic-addon1">
                                 </div>
                                
                                 <div class="input-group center sup mb-3">
-                                    <button class="btn btn-success btn-round">SIGN UP</button>
-                                </div>    
+                                    <button class="btn btn-success btn-round" name="btnsignup">SIGN UP</button>
+                                </div> 
+</form>   
                             </div>
                             
 
@@ -163,6 +234,7 @@
                        
                     </div>
                 </div>
+                </form>
             </div>
         </div>
     </div>

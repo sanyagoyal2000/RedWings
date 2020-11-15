@@ -1,3 +1,30 @@
+<?php
+include "config.php";
+
+if(isset($_POST['but_submit'])){
+
+    $email = mysqli_real_escape_string($con,$_POST['email']);
+    $password = mysqli_real_escape_string($con,$_POST['password']);
+
+    if ($email != "" && $password != ""){
+
+        $sql_query = "select count(*) as cntUser from users where email='".$email."' and password='".$password."'";
+        $result = mysqli_query($con,$sql_query);
+        $row = mysqli_fetch_array($result);
+        
+        $count = $row['cntUser'];
+
+        if($count > 0){
+            $_SESSION['email'] = $email;
+            header('Location: home.php');
+        }else{
+            echo "Invalid username and password";
+        }
+
+    }
+
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -79,39 +106,29 @@
                         <div class="col-lg-8 col-md-7 log-det">
                             
                             <h2>Log in to RedWings</h2>
-                            <div class="row">
-                                <ul>
-                                   <li> <i class="fab fa-google"></i></li>
-                                   <li> <i class="fab fa-facebook-square"></i></li>
-                                    
+                            
 
-                                    <li><i class="fab fa-twitter-square"></i></li>
-                                </ul>
-                            </div>
-                            <div class="row">
-                                <p class="small-info">or use your email account</p>
-                            </div>
-
-
+                            <form method="post" action="">
                             <div class="text-box-cont">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                    <input type="text" class="form-control" placeholder="Email Id" aria-label="Username" id="txt_uname" name="email" aria-describedby="basic-addon1">
                                 </div>
                                  <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon1"><i class="fas fa-lock"></i></span>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                    <input type="password" class="form-control" placeholder="Password" id="txt_uname" name="password" aria-label="Username" aria-describedby="basic-addon1">
                                 </div>
                                 <div class="row">
                                     <p class="forget-p">Forget Password ?</p>
                                 </div>
                                 <div class="input-group center mb-3">
-                                    <button class="btn btn-success btn-round">LOG IN</button>
-                                </div>    
+                                    <button class="btn btn-success btn-round" name="but_submit" >LOG IN</button>
+                                </div>   
+</form> 
                             </div>
                             
 
@@ -121,7 +138,7 @@
                             <div class="ditk-inf">
                                 <h2 class="w-100">Don't Have an Account </h2>
                                 <p>Simply Create your account by clicking the Signup Button</p>
-                                <a href="signup.html">
+                                <a href="signup.php">
                                 <button type="button" class="btn btn-outline-light">SIGN UP</button>
                                 </a>
                             </div>
