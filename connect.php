@@ -1,4 +1,14 @@
 <?php
+$server_name="localhost";
+$username="root";
+$password="";
+$database_name="bb";
+$conn=mysqli_connect($server_name,$username,$password,$database_name);
+if(!$conn)
+{
+    die("Connection Failed:" .msql_connect_error());
+}
+if(isset($_POST['save'])){
     $name = $_POST['name'];
     $phone = $_POST['phone'];
     $email = $_POST['email'];
@@ -12,18 +22,14 @@
 	$bloodgroup = $_POST['bloodgroup'];
 	
 
-	// Database connection
-	$conn = new mysqli('localhost','root','','bb');
-	if($conn->connect_error){
-		echo "$conn->connect_error";
-		die("Connection Failed : ". $conn->connect_error);
-	} else {
-		$stmt = $conn->prepare("insert into registration(name,phone, email, password, ad1,ad2,city,state,zip,bloodgroup) values(?, ?, ?, ?, ?, ?,?,?,?,?)");
-		$stmt->bind_param("sissssssis", $name,$phone,$email,$password,$ad1,$ad2,$city,$state,$zip,$bloodgroup);
-		$execval = $stmt->execute();
-		echo $execval;
-		echo "Registration successfully...";
-		$stmt->close();
-		$conn->close();
-	}
+ $sql_query="INSERT INTO entry_details (name,phone,email,password,ad1,ad2,city,state,zip,bloodgroup)
+ VALUES('$name','$phone','$email','$password','$ad1','$ad2','$city','$state','$zip','$bloodgroup')";
+	if(mysqli_query($conn,$sql_query)){
+        echo "New Details Entry inserted successfull !";
+    }
+    else{
+        echo "Errror: "
+.$sql."" .msqli_error($conn);    }
+mysqli_close($conn);
+    }
 ?>
