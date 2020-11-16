@@ -3,13 +3,13 @@ include "config.php";
 
 // Check user login or not
 if(!isset($_SESSION['email'])){
-    header('Location: index.php');
+    header('Location:signup.php');
 }
 
 // logout
 if(isset($_POST['but_logout'])){
     session_destroy();
-    header('Location: index.php');
+    header('Location:signup.php');
 }
 ?>
 <!DOCTYPE html>
