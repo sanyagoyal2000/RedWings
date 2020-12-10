@@ -24,7 +24,11 @@
   .navbar-nav {
     text-align: center;
   }
-  
+  .nav-link1 {
+    background-color:black;
+    color: white;
+
+  }
   .nav-link {
     padding: .2rem 1rem;
   }

@@ -3,13 +3,13 @@ include "config.php";
 
 // Check user login or not
 if(!isset($_SESSION['email'])){
-    header('Location: index.php');
+    header('Location: signup.php');
 }
 
 // logout
 if(isset($_POST['but_logout'])){
     session_destroy();
-    header('Location: index.php');
+    header('Location: signup.php');
 }
 ?>
 <!DOCTYPE html>
@@ -29,7 +29,7 @@ if(isset($_POST['but_logout'])){
 <body>
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
-          <a class="navbar-brand" href="index.html">RedWings</a>
+          <a class="navbar-brand" href="#">RedWings</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -37,18 +37,18 @@ if(isset($_POST['but_logout'])){
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
       <li class="nav-item active">
-                <a class="nav-link" href="index.html">Home</a>
+                <a class="nav-link" href="home.php">Home</a>
               </li>
       <li class="nav-item">
-                <a class="nav-link" href="about.html">About Us</a>
+                <a class="nav-link" href="about1.php">About Us</a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Donors
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="why.html">Why Donate Blood</a>
-                  <a class="dropdown-item" href="donreg.html">Donor Registration</a>
+                  <a class="dropdown-item" href="why1.php">Why Donate Blood</a>
+                  <a class="dropdown-item" href="donreg1.php">Donor Registration</a>
                   
                 </div>
               </li>
@@ -57,24 +57,25 @@ if(isset($_POST['but_logout'])){
                     Blood Banks
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="regist.html">Registered BloodBanks</a>
-                  <a class="dropdown-item" href="newbb.html">New Registration</a>
-                  
+                  <a class="dropdown-item" href="regist1.php">Registered BloodBanks</a>
+                  <a class="dropdown-item" href="newbb1.php">New Registration</a>
+                  <a class="dropdown-item" href="find.php">Required BloodBanks</a>
                 </div>
               </li>
      
      
         <li class="nav-item">
-                    <a class="nav-link" href="search.html">Search Blood</a>
-                  </li>
-          <li class="nav-item">
-                    <a class="nav-link" href="login.html">Login</a>
+                    <a class="nav-link" href="search1.php">Search Blood</a>
                   </li>
                   <li class="nav-item">
-                  <form method='post' action="">
-            <input type="submit" value="Logout" name="but_logout">
-        </form>
+                    <a class="nav-link" href="contact.php">Contact Us</a>
                   </li>
+          <li class="nav-item">
+                    <a class="nav-link"><form method='post' action="">
+            <input type="submit" value="Logout" name="but_logout">
+        </form></a>
+                  </li>
+                  
       </ul>
     </div>
       </div>

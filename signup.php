@@ -105,7 +105,7 @@ if(isset($_POST['btnsignup'])){
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="why.html">Why Donate Blood</a>
-                  <a class="dropdown-item" href="donreg.html">Donor Registration</a>
+                  <a class="dropdown-item" href="donreg.php">Donor Registration</a>
                   
                 </div>
               </li>
@@ -114,9 +114,9 @@ if(isset($_POST['btnsignup'])){
                     Blood Banks
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="regist.html">Registered BloodBanks</a>
-                  <a class="dropdown-item" href="newbb.html">New Registration</a>
-                  
+                  <a class="dropdown-item" href="regist.php">Registered BloodBanks</a>
+                  <a class="dropdown-item" href="newbb.php">New Registration</a>
+                  <a class="dropdown-item" href="find.php">Required BloodBanks</a>
                 </div>
               </li>
      
@@ -125,7 +125,7 @@ if(isset($_POST['btnsignup'])){
                     <a class="nav-link" href="search.html">Search Blood</a>
                   </li>
           <li class="nav-item">
-                    <a class="nav-link" href="login.html">Login</a>
+                    <a class="nav-link" href="login.php">Login</a>
                   </li>
       </ul>
     </div>
@@ -143,7 +143,7 @@ if(isset($_POST['btnsignup'])){
                             <div class="ditk-inf sup-oi">
                                 <h2 class="w-100">Already Have an Account </h2>
                                 <p>Simply login to your account by clicking the login Button</p>
-                                <a href="index.html">
+                                <a href="login.php">
                                     <button type="button" class="btn btn-outline-light">LOG IN</button>
                                 </a>
                             </div>
@@ -207,7 +207,12 @@ if(!empty($success_message)){
                                     <div class="input-group-prepend">
                                         <span class="input-group-text" id="basic-addon1"><i class="fas fa-venus-mars"></i></span>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="Gender" name="gender" aria-label="Username" aria-describedby="basic-addon1">
+                                   <div class="form-control">
+
+                                   Male<input type="radio" name="gender" value="male" />
+
+                                   Female<input type="radio" name="gender" value="female"/>
+                                   Other<input type="radio" name="gender" value="other"/></div>
                                 </div>
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">

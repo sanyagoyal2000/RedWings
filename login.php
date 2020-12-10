@@ -71,7 +71,7 @@ if(isset($_POST['but_submit'])){
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="why.html">Why Donate Blood</a>
-                  <a class="dropdown-item" href="donreg.html">Donor Registration</a>
+                  <a class="dropdown-item" href="donreg.php">Donor Registration</a>
                   
                 </div>
               </li>
@@ -80,9 +80,9 @@ if(isset($_POST['but_submit'])){
                     Blood Banks
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="regist.html">Registered BloodBanks</a>
-                  <a class="dropdown-item" href="newbb.html">New Registration</a>
-                  
+                  <a class="dropdown-item" href="regist.php">Registered BloodBanks</a>
+                  <a class="dropdown-item" href="newbb.php">New Registration</a>
+                  <a class="dropdown-item" href="find.php">Required BloodBanks</a>
                 </div>
               </li>
      
@@ -91,7 +91,10 @@ if(isset($_POST['but_submit'])){
                     <a class="nav-link" href="search.html">Search Blood</a>
                   </li>
           <li class="nav-item">
-                    <a class="nav-link" href="login.html">Login</a>
+                    <a class="nav-link" href="login.php">Login</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="contact.php">Contact Us</a>
                   </li>
       </ul>
     </div>
@@ -122,9 +125,7 @@ if(isset($_POST['but_submit'])){
                                     </div>
                                     <input type="password" class="form-control" placeholder="Password" id="txt_uname" name="password" aria-label="Username" aria-describedby="basic-addon1">
                                 </div>
-                                <div class="row">
-                                    <p class="forget-p">Forget Password ?</p>
-                                </div>
+                                
                                 <div class="input-group center mb-3">
                                     <button class="btn btn-success btn-round" name="but_submit" >LOG IN</button>
                                 </div>   
