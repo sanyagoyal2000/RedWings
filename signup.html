@@ -1,6 +1,4 @@
-<?php 
-include "config.php";
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,64 +22,7 @@ include "config.php";
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <link rel="shortcut icon" href="assets/images/fav.jpg">
-<?php 
-$error_message = "";$success_message = "";
 
-// Register user
-if(isset($_POST['btnsignup'])){
-   $name = trim($_POST['name']);
-  
-   $email = trim($_POST['email']);
-   $password = trim($_POST['password']);
-   
-   $gender = trim($_POST['gender']);
-   $address = trim($_POST['address']);
-   $phone = trim($_POST['phone']);
-   
-
-   $isValid = true;
-
-   // Check fields are empty or not
-   if($name == ''  || $email == '' || $password == ''|| $gender==''||$address==''||$phone==''){
-     $isValid = false;
-     $error_message = "Please fill all fields.";
-   }
-
-  
-
-   // Check if Email-ID is valid or not
-   if ($isValid && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-     $isValid = false;
-     $error_message = "Invalid Email-ID.";
-   }
-
-   if($isValid){
-
-     // Check if Email-ID already exists
-     $stmt = $con->prepare("SELECT * FROM users WHERE email = ?");
-     $stmt->bind_param("s", $email);
-     $stmt->execute();
-     $result = $stmt->get_result();
-     $stmt->close();
-     if($result->num_rows > 0){
-       $isValid = false;
-       $error_message = "Email-ID is already existed.";
-     }
-
-   }
-
-   // Insert records
-   if($isValid){
-     $insertSQL = "INSERT INTO users(name,email,password,gender,address,phone) values(?,?,?,?,?,?)";
-     $stmt = $con->prepare($insertSQL);
-     $stmt->bind_param("ssssss",$name,$email,$password,$gender,$address,$phone);
-     $stmt->execute();
-     $stmt->close();
-
-     $success_message = "Account created successfully.";
-   }
-}
-?>
 </head>
 <body>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark"">
@@ -105,7 +46,7 @@ if(isset($_POST['btnsignup'])){
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="why.html">Why Donate Blood</a>
-                  <a class="dropdown-item" href="donreg.php">Donor Registration</a>
+                  <a class="dropdown-item" href="donreg.html">Donor Registration</a>
                   
                 </div>
               </li>
@@ -114,9 +55,9 @@ if(isset($_POST['btnsignup'])){
                     Blood Banks
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="regist.php">Registered BloodBanks</a>
-                  <a class="dropdown-item" href="newbb.php">New Registration</a>
-                  <a class="dropdown-item" href="find.php">Required BloodBanks</a>
+                  <a class="dropdown-item" href="regist.html">Registered BloodBanks</a>
+                  <a class="dropdown-item" href="newbb.html">New Registration</a>
+                  <a class="dropdown-item" href="find.html">Required BloodBanks</a>
                 </div>
               </li>
      
@@ -125,7 +66,10 @@ if(isset($_POST['btnsignup'])){
                     <a class="nav-link" href="search.html">Search Blood</a>
                   </li>
           <li class="nav-item">
-                    <a class="nav-link" href="login.php">Login</a>
+                    <a class="nav-link" href="login.html">Login</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact Us</a>
                   </li>
       </ul>
     </div>
@@ -143,7 +87,7 @@ if(isset($_POST['btnsignup'])){
                             <div class="ditk-inf sup-oi">
                                 <h2 class="w-100">Already Have an Account </h2>
                                 <p>Simply login to your account by clicking the login Button</p>
-                                <a href="login.php">
+                                <a href="login.html">
                                     <button type="button" class="btn btn-outline-light">LOG IN</button>
                                 </a>
                             </div>
@@ -156,29 +100,6 @@ if(isset($_POST['btnsignup'])){
                             <form method='post' action=''>
 
 
-<?php 
-// Display Error message
-if(!empty($error_message)){
-?>
-<div class="alert alert-danger">
-  <strong>Error!</strong> <?= $error_message ?>
-</div>
-
-<?php
-}
-?>
-
-<?php 
-// Display Success message
-if(!empty($success_message)){
-?>
-<div class="alert alert-success">
-  <strong>Success!</strong> <?= $success_message ?>
-</div>
-
-<?php
-}
-?>
 
                             <div class="text-box-cont">
                                 <div class="input-group mb-3">

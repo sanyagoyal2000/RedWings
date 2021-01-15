@@ -1,17 +1,3 @@
-<?php
-include "config.php";
-
-// Check user login or not
-if(!isset($_SESSION['email'])){
-    header('Location: signup.php');
-}
-
-// logout
-if(isset($_POST['but_logout'])){
-    session_destroy();
-    header('Location: signup.php');
-}
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,91 +13,8 @@ if(isset($_POST['but_logout'])){
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Poppins:400,600&display=swap" rel="stylesheet">
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
-<?php 
-$error_message = "";$success_message = "";
-if(isset($_POST['terms'])){
-    
-  $chosenAnswer = $_POST['terms'];
-
-  if(strcasecmp($chosenAnswer, "yes") == 0){
-    $isValid=true;
-          
-   
-if (isset($_POST['submit'])) {
-  
-
-  $fname=trim($_POST['fname']);
-  $lname=trim($_POST['lname']);
-  $email=trim($_POST['email']);
-  $password=trim($_POST['password']);
-  
-  $gender = ($_POST['gender']);
-
-  
-  $phone=trim($_POST['phone']);
-  
-  $Day = trim($_POST['Day']);
-  $Month =trim($_POST['Month']);
-  $Year =trim( $_POST['Year']);
-
-  
-  $bloodgroup=trim($_POST['bloodgroup']);
-  $ad1=trim($_POST['ad1']);
-  $ad2=trim($_POST['ad2']);
-  $city=trim($_POST['city']);
-  $state=trim($_POST['state']);
-  $zip=trim($_POST['zip']);
-  
-  
-  $isValid=true;
-
- 
-if($fname == '' ||$lname=='' || $email == '' || $password == ''|| $gender==''||$phone==''||$Day=='' ||$Month==''||$Year==''||$bloodgroup==''||$ad1==''||$ad2==''||$city==''||$state==''||$zip==''){
-  $isValid = false;
-  $error_message = "Please fill all fields.";
-}
 
 
-
-// Check if Email-ID is valid or not
-if ($isValid && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-  $isValid = false;
-  $error_message = "Invalid Email-ID.";
-}
-
-if($isValid){
-
-  // Check if Email-ID already exists
-  $stmt = $con->prepare("SELECT * FROM donors WHERE email = ?");
-  $stmt->bind_param("s", $email);
-  $stmt->execute();
-  $result = $stmt->get_result();
-  $stmt->close();
-  if($result->num_rows > 0){
-    $isValid = false;
-    $error_message = "Email-ID is already existed.";
-  }
-
-}
-
-// Insert records
-if($isValid){
-  $insertSQL = "INSERT INTO donors(fname,lname,email,password,gender,phone,Day,Month,Year,bloodgroup,ad1,ad2,city,state,zip) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-  $stmt = $con->prepare($insertSQL);
-  $stmt->bind_param("ssssssiiissssss",$fname,$lname,$email,$password,$phone,$gender,$Day,$Month,$Year,$bloodgroup,$ad1,$ad2,$city,$state,$zip);
-  $stmt->execute();
-  $stmt->close();
-
-  $success_message = "Account created successfully.";
-}
-}
-  }
-
-  else{
-    echo "Rethink your choice";
-  }
-  }
-?>
 </head>
 <body>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark"">
@@ -124,18 +27,18 @@ if($isValid){
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
       <li class="nav-item active">
-                <a class="nav-link" href="home.php">Home</a>
+                <a class="nav-link" href="index.html">Home</a>
               </li>
       <li class="nav-item">
-                <a class="nav-link" href="about1.php">About Us</a>
+                <a class="nav-link" href="about.html">About Us</a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Donors
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="why1.php">Why Donate Blood</a>
-                  <a class="dropdown-item" href="donreg1.php">Donor Registration</a>
+                  <a class="dropdown-item" href="why.html">Why Donate Blood</a>
+                  <a class="dropdown-item" href="donreg.html">Donor Registration</a>
                   
                 </div>
               </li>
@@ -144,20 +47,21 @@ if($isValid){
                     Blood Banks
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="regist1.php">Registered BloodBanks</a>
-                  <a class="dropdown-item" href="newbb1.php">New Registration</a>
-                  <a class="dropdown-item" href="find.php">Required BloodBanks</a>
+                  <a class="dropdown-item" href="regist.html">Registered BloodBanks</a>
+                  <a class="dropdown-item" href="newbb.html">New Registration</a>
+                  <a class="dropdown-item" href="find.html">Required BloodBanks</a>
                 </div>
               </li>
      
      
         <li class="nav-item">
-                    <a class="nav-link" href="search1.php">Search Blood</a>
+                    <a class="nav-link" href="search.html">Search Blood</a>
                   </li>
           <li class="nav-item">
-                    <a class="nav-link"> <form method='post' action="">
-            <input type="submit" value="Logout" name="but_logout">
-        </form></a>
+                    <a class="nav-link" href="login.html">Login</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact Us</a>
                   </li>
       </ul>
     </div>
@@ -189,29 +93,7 @@ if($isValid){
               <div class="row">
                 <div class="col-12 col-lg-8 m-auto">
                   <form class="multisteps-form__form" method='post' action=''>
-                  <?php 
-// Display Error message
-if(!empty($error_message)){
-?>
-<div class="alert alert-danger">
-  <strong>Error!</strong> <?= $error_message ?>
-</div>
-
-<?php
-}
-?>
-
-<?php 
-// Display Success message
-if(!empty($success_message)){
-?>
-<div class="alert alert-success">
-  <strong>Success!</strong> <?= $success_message ?>
-</div>
-
-<?php
-}
-?>
+                  
 
                     <div class="multisteps-form__panel shadow p-4 rounded bg-white js-active" data-animation="scaleIn">
                       <h3 class="multisteps-form__title">User Info</h3>

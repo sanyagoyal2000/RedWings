@@ -1,6 +1,4 @@
-<?php
-include "config.php";
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,43 +23,7 @@ include "config.php";
 
     <link rel="stylesheet" type="text/css" href="css/util.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    
-    <?php 
-
-$error_message = "";$success_message = "";
-
-
-// Register user
-if(isset($_POST['contactbtn'])){
- 
-   $name = trim($_POST['name']);
    
-   $email = trim($_POST['email']);
-   $phone = trim($_POST['phone']);
-   $messages = trim($_POST['messages']);
-   
-   $isValid=true;
-
- 
-   if($name == ''  || $email == '' || $phone==''||$messages=='' ){
-     $isValid = false;
-     $error_message = "Please fill all fields.";
-   }
-   
-   if($isValid){
-    $insertSQL = "INSERT INTO message(name,email,phone,messages) values(?,?,?,?)";
-    $stmt = $con->prepare($insertSQL);
-    $stmt->bind_param("ssss",$name,$email,$phone,$messages);
-    $stmt->execute();
-    $stmt->close();
-  
-    $success_message = "Query submitted successfully";
-  }
-  
-    }
-  
-    
-  ?>
 </head>
 <body>
 	<nav class="navbar navbar-expand-sm bg-dark navbar-dark"">
@@ -85,7 +47,7 @@ if(isset($_POST['contactbtn'])){
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="why.html">Why Donate Blood</a>
-                  <a class="dropdown-item" href="donreg.php">Donor Registration</a>
+                  <a class="dropdown-item" href="donreg.html">Donor Registration</a>
                   
                 </div>
               </li>
@@ -94,9 +56,9 @@ if(isset($_POST['contactbtn'])){
                     Blood Banks
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="regist.php">Registered BloodBanks</a>
-                  <a class="dropdown-item" href="newbb.php">New Registration</a>
-                  <a class="dropdown-item" href="find.php">Required BloodBanks</a>
+                  <a class="dropdown-item" href="regist.html">Registered BloodBanks</a>
+                  <a class="dropdown-item" href="newbb.html">New Registration</a>
+                  <a class="dropdown-item" href="find.html">Required BloodBanks</a>
                 </div>
               </li>
      
@@ -105,10 +67,10 @@ if(isset($_POST['contactbtn'])){
                     <a class="nav-link" href="search.html">Search Blood</a>
                   </li>
           <li class="nav-item">
-                    <a class="nav-link" href="login.php">Login</a>
+                    <a class="nav-link" href="login.html">Login</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="contact.php">Contact Us</a>
+                    <a class="nav-link" href="contact.html">Contact Us</a>
                   </li>
       </ul>
     </div>
@@ -123,29 +85,7 @@ if(isset($_POST['contactbtn'])){
 				</div>
 
 				<form class="contact100-form validate-form" method='post' action=''>
-        <?php 
-// Display Error message
-if(!empty($error_message)){
-?>
-<div class="alert alert-danger">
-  <strong>Error!</strong> <?= $error_message ?>
-</div>
-
-<?php
-}
-?>
-
-<?php 
-// Display Success message
-if(!empty($success_message)){
-?>
-<div class="alert alert-success">
-  <strong>Success!</strong> <?= $success_message ?>
-</div>
-
-<?php
-}
-?>
+     
 					<span class="contact100-form-title">
 						Get in touch
 					</span>

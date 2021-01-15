@@ -1,6 +1,4 @@
-<?php
-include "config.php";
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,48 +16,7 @@ include "config.php";
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-<?php 
 
-$name='';
-
-
-// Register user
-if(isset($_POST['btnsignup'])){
- 
-   $name = trim($_POST['name']);
-   $phone = trim($_POST['phone']);
-   $email = trim($_POST['email']);
-   $password = trim($_POST['password']);
-   $ad1 = trim($_POST['ad1']);
-   $ad2 = trim($_POST['ad2']);
-   $city = trim($_POST['city']);
-   $state = trim($_POST['state']);
-   $zip = trim($_POST['zip']);
-  
-  $bloodgroup_arr=$_POST['blood'];
-  $blood=implode(",",$bloodgroup_arr);
-  
- 
-
-
-
-   
-    
-
-   
-    $query = "INSERT INTO bloodbanks (name,phone,email,password,ad1,ad2,city,state,zip,blood) VALUES ('$name', '$phone','$email','$password','$ad1','$ad2','$city','$state','$zip','$blood')";
-    
-    if(!mysqli_query($con,$query))
-    {
-        die("DAMMIT");
-    }
-    else{ echo "Success"; }
-    
-    mysqli_close($con);
-
-   
-  }
-?>
 </head>
 <body>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark"">
@@ -83,7 +40,7 @@ if(isset($_POST['btnsignup'])){
                 </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="why.html">Why Donate Blood</a>
-                  <a class="dropdown-item" href="donreg.php">Donor Registration</a>
+                  <a class="dropdown-item" href="donreg.html">Donor Registration</a>
                   
                 </div>
               </li>
@@ -92,9 +49,9 @@ if(isset($_POST['btnsignup'])){
                     Blood Banks
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="regist.php">Registered BloodBanks</a>
-                  <a class="dropdown-item" href="newbb.php">New Registration</a>
-                  <a class="dropdown-item" href="find.php">Required BloodBanks</a>
+                  <a class="dropdown-item" href="regist.html">Registered BloodBanks</a>
+                  <a class="dropdown-item" href="newbb.html">New Registration</a>
+                  <a class="dropdown-item" href="find.html">Required BloodBanks</a>
                 </div>
             </li>
      
@@ -103,7 +60,7 @@ if(isset($_POST['btnsignup'])){
                     <a class="nav-link" href="search.html">Search Blood</a>
                   </li>
             <li class="nav-item">
-                    <a class="nav-link" href="login.php">Login</a>
+                    <a class="nav-link" href="login.html">Login</a>
                   </li>
             </ul>
            </div>
