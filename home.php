@@ -1,3 +1,17 @@
+<?php
+include "config.php";
+
+// Check user login or not
+if(!isset($_SESSION['email'])){
+    header('Location:signup.php');
+}
+
+// logout
+if(isset($_POST['but_logout'])){
+    session_destroy();
+    header('Location:signup.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +29,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
-          <a class="navbar-brand" href="#">RedWings</a>
+          <a class="navbar-brand" href="index.html">RedWings</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -34,7 +48,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="why.html">Why Donate Blood</a>
-                  <a class="dropdown-item" href="donreg.php">Donor Registration</a>
+                  <a class="dropdown-item" href="donreg.html">Donor Registration</a>
                   
                 </div>
               </li>
@@ -43,9 +57,9 @@
                     Blood Banks
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="regist.php">Registered BloodBanks</a>
-                  <a class="dropdown-item" href="newbb.php">New Registration</a>
-                  <a class="dropdown-item" href="find.php">Required BloodBanks</a>
+                  <a class="dropdown-item" href="regist.html">Registered BloodBanks</a>
+                  <a class="dropdown-item" href="newbb.html">New Registration</a>
+                  
                 </div>
               </li>
      
@@ -56,8 +70,10 @@
           <li class="nav-item">
                     <a class="nav-link" href="login.html">Login</a>
                   </li>
-          <li class="nav-item">
-                    <a class="nav-link" href="contact.php">Contact Us</a>
+                  <li class="nav-item">
+                  <form method='post' action="">
+            <input type="submit" value="Logout" name="but_logout">
+        </form>
                   </li>
       </ul>
     </div>
