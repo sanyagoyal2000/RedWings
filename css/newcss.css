@@ -1,0 +1,149 @@
+body{
+    font-family: "Lato", sans-serif;
+    margin:0px;
+}
+.nav-wrapper {
+  margin-top:0px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #191919;
+  font-family: 'Sriracha', cursive;
+  height:80px;
+  
+}
+.dropbtn {
+  margin-top:0px;
+  background-color: #191919;
+  color: #8a8a8a;
+ 
+ 
+  border: none;
+  text-transform: uppercase;
+  font-size: 1.0rem;
+  margin-bottom:12px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  text-transform: none;
+  font-family: 'Acme', sans-serif;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #606060;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #101010;}
+
+.right-side {
+  display: flex;
+padding: 50px;
+margin-top: -10px;}
+.left-side{
+  margin-top:0px;
+}
+.brand> img{
+margin-top:-30px;
+margin-left:50px;
+margin-bottom:10px;
+padding-top: 0px;
+
+
+}
+.nav-wrapper > .right-side > div {
+  margin-left: 20px;
+  text-transform: uppercase;
+  font-size: 1.0rem;
+}
+
+.nav-link-wrapper {
+  height: 22px;
+  border-bottom: 1px solid transparent;
+  transition: border-bottom 0.5s;
+}
+
+.active-nav-link {
+  border-bottom: 1px solid white;
+}
+
+.active-nav-link a {
+  color: white !important;
+}
+
+.nav-link-wrapper a {
+  color: #8a8a8a;
+  text-decoration: none;
+  transition: color 0.5s;
+}
+
+.nav-link-wrapper:hover {
+  border-bottom: 1px solid white;
+}
+
+.nav-link-wrapper a:hover {
+  color: white;
+}
+
+.two-column-wrapper {
+  margin:100px;
+display: grid;
+grid-template-columns: 1fr 1fr;
+}
+
+.profile-image-wrapper  {
+width: 100%;
+grid-template-columns: 1fr 1fr;
+
+}
+.img1{
+width:100%;
+
+}
+.img2{
+width:100%;
+
+}
+
+.profile-content-wrapper {
+padding: 30px;
+}
+
+
+.btn1{
+margin: 0 auto;
+border:2px solid black;
+
+background-color: #DC143C ;
+text-align: center;
+display:block;
+
+align-self: center;
+width: 140px;
+text-transform: uppercase;
+
+
+
+}
+.btn1 p{
+color:white;
+font-weight:bold;
+font-style: italic;
+
+}

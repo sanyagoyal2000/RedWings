@@ -1,76 +1,89 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Design</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="design1.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8"/>
+    <title>RedWings</title>
+  
+<link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet">
 
-<style>
+  
+<link rel="stylesheet" href="css/newcss.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+ <style>
   h3{
     color: #cc0000
 ;
   }
+
+  
 </style>
-</head>
 <body>
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark"">
-        <div class="container">
-          <a class="navbar-brand" href="#">RedWings</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="topnav-right">
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto">
-      <li class="nav-item active">
-                <a class="nav-link" href="index.html">Home</a>
-              </li>
-      <li class="nav-item">
-                <a class="nav-link" href="about.html">About Us</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Donors
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="why.html">Why Donate Blood</a>
-                  <a class="dropdown-item" href="donreg.html">Donor Registration</a>
-                  
-                </div>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Blood Banks
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="regist.html">Registered BloodBanks</a>
-                  <a class="dropdown-item" href="newbb.html">New Registration</a>
-                  <a class="dropdown-item" href="find.html">Required BloodBanks</a>
-                </div>
-              </li>
-     
-     
-        <li class="nav-item">
-                    <a class="nav-link" href="search.html">Search Blood</a>
-                  </li>
-          <li class="nav-item">
-                    <a class="nav-link" href="login.html">Login</a>
-                  </li>
-          <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact Us</a>
-                  </li>
-      </ul>
-    </div>
+
+
+  <div class="nav-wrapper">
+    <div class="left-side">
+      <div class="brand"  >
+        <img src="67.png"  >
       </div>
-      </div>
-      </nav>
       
-<div class="content-wrapper">
+    </div>
+
+    <div class="right-side">
+    <div class="nav-link-wrapper">
+      
+        <a href="index.html">Home</a>
+      </div>
+
+      <div class="nav-link-wrapper active-nav-link">
+        <a href="about.html">About Us</a>
+      </div>
+      <div class="nav-link-wrapper">
+        <div class="dropdown">
+          <button class="dropbtn">Donors</button>
+          <div class="dropdown-content">
+           
+         
+          <a href="why.html">Why Donate Blood</a>
+          <a href="donreg.html">Donor Registration</a>
+           
+          </div>
+        </div>
+          </div>
+          <div class="nav-link-wrapper">
+        <div class="dropdown">
+          <button class="dropbtn">Blood Banks</button>
+          <div class="dropdown-content">
+           
+         
+          <a  href="regist.html">Registered BloodBanks</a>
+                  <a  href="newbb.html">New Registration</a>
+                  <a  href="find.html">Required BloodBanks</a>
+           
+          </div>
+        </div>
+          </div>
+           <div class="nav-link-wrapper">
+        <a href="search.html">Search Blood</a>
+      </div>
+        <div class="nav-link-wrapper" style="font-family: 'Sriracha', cursive;">
+        <a href="camp.html">Donation Camps</a>
+      </div>
+        <div class="nav-link-wrapper">
+        <a href="contact.html">Contact Us</a>
+      </div>
+      <div class="nav-link-wrapper">
+        <a href="login.html">Login</a>
+      </div>
+    </div>
+  </div>
+  <div class="content-wrapper">
   <div class="two-column-wrapper">
     <div class="profile-image-wrapper">
       <div class="img1">
@@ -102,12 +115,13 @@
        </ul>
       
        
-      <p style="color: #ff4d4d;"><i>It is our mission to make the best use of contemporary technologies in delivering a promising web portal to bring together all the blood donors in India; thereby fulfilling every blood request in the country.
+      <p style="color: #ff4d4d;"><i>It is our mission to make the best use of contemporary technologies in delivering a promising web portal to bring together all the blood donors and blood banks in India; thereby fulfilling every blood request in the country.
        </i></p>
       
-      <p>We, at Red Wings, are a community of blood donors and recipients who aspire to provide easy access to the blood banks and related 
-        hospitals to the recipients and donors alike. Donors can join us and look for nearest blood banks to their location. People in need of blood 
-        can search for blood banks near them. In order to provide easy access of blood to those in need, we share your details with the blood bank you are approaching to reduce the hassle of documentation when in need. We also provide a list of blood banks associated with us to ensure the authenticity and their contact information in case of emergencies. Anyone can associate with us and help us fulfil our objectives and save a life.</p>
+      <p>We, at Red Wings, are a community of blood donors and blood banks who aspire to provide easy access to the blood banks and related 
+        hospitals to both recipients and donors. Donors can join us and look for nearest blood banks to their location. People in need of blood 
+        can search for blood banks near them. In order to provide easy access of blood to those in need, we also share your details with the blood bank you are approaching to reduce the hassle of documentation when in need. We also provide a list of blood banks associated with us to ensure the authenticity and their contact information in case of emergencies. Anyone can associate with us and help us fulfil our objectives and save a life.
+        We also regularly organize blood donation camps so that those willing to donate blood can get the opportunity to do their part for the betterment of society.</p>
       
       
     </div>
@@ -116,4 +130,8 @@
 </div>
 
 </body>
+</html>
+
+  </body>
+
 </html>
